@@ -1,8 +1,9 @@
-# Spot Claim (Phase 1: Telegram bot)
+# Spot Claim (Phase 1: Telegram bot on Vercel)
 
-1. `python -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt`
-3. `cp .env.example .env` and set TELEGRAM_BOT_TOKEN (from @BotFather)
-4. `python bot.py`
+Env vars (Vercel > Settings > Environment Variables):
+TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET (any long random string),
+APP_BASE_URL (your https://xxx.vercel.app, no trailing slash),
+KV_REST_API_URL + KV_REST_API_TOKEN (from Upstash Redis via Vercel Marketplace).
 
-No platform is supported yet. Add adapters in `adapters.py` once a real integration is built and tested.
+After deploy, open once: https://YOUR-APP.vercel.app/setup?secret=YOUR_WEBHOOK_SECRET
+Then send /start to the bot.
