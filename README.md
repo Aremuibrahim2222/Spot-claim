@@ -1,9 +1,10 @@
-# Spot Claim (Phase 1: Telegram bot on Vercel)
+# Spot Claim: instant campaign alerts
 
-Env vars (Vercel > Settings > Environment Variables):
-TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET (any long random string),
-APP_BASE_URL (your https://xxx.vercel.app, no trailing slash),
-KV_REST_API_URL + KV_REST_API_TOKEN (from Upstash Redis via Vercel Marketplace).
+Env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, NOTIFY_SECRET, ADMIN_CHAT_ID,
+APP_BASE_URL, KV_REST_API_URL, KV_REST_API_TOKEN.
 
-After deploy, open once: https://YOUR-APP.vercel.app/setup?secret=YOUR_WEBHOOK_SECRET
-Then send /start to the bot.
+After deploy open once: /setup?secret=<TELEGRAM_WEBHOOK_SECRET>
+
+Announce a campaign:
+- Admin: in the bot send `/drop Campaign name | https://link | 20`
+- Automatic: POST /notify with header `X-Notify-Secret` and JSON {"name","link","spots"}
