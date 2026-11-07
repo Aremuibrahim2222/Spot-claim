@@ -1,10 +1,12 @@
-# Spot Claim: instant campaign alerts
+# Spot Claim
 
-Env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, NOTIFY_SECRET, ADMIN_CHAT_ID,
-APP_BASE_URL, KV_REST_API_URL, KV_REST_API_TOKEN.
+Instant campaign alerts for any registered platform.
 
-After deploy open once: /setup?secret=<TELEGRAM_WEBHOOK_SECRET>
+Vercel env vars: TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, ADMIN_CHAT_ID, APP_BASE_URL,
+KV_REST_API_URL, KV_REST_API_TOKEN. After deploy open once: /setup?secret=<TELEGRAM_WEBHOOK_SECRET>
 
-Announce a campaign:
-- Admin: in the bot send `/drop Campaign name | https://link | 20`
-- Automatic: POST /notify with header `X-Notify-Secret` and JSON {"name","link","spots"}
+Admin commands (only from ADMIN_CHAT_ID):
+- /addplatform Name | domain.com | https://domain.com/connect-spotclaim   (returns the platform secret once)
+- /drop domain.com | Campaign name | https://domain.com/link | 20        (manual alert)
+
+Give DEVGUIDE.md and the platform secret to each platform's developer.
